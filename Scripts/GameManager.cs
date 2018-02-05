@@ -85,8 +85,13 @@ public class GameManager : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.orientation = ScreenOrientation.AutoRotation;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Drag Begin");
@@ -110,17 +115,9 @@ public class GameManager : MonoBehaviour, IPointerDownHandler, IPointerClickHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // gm.deep();
         mousepressed = true;
         Debug.Log("Mouse Down: " + eventData.pointerCurrentRaycast.gameObject.name);
-        //if (sceneManager != null)
-        //{
-            Debug.Log("hello"+  eventData.pointerCurrentRaycast.gameObject.name);
         sceneManager.OnMouseDown(eventData.pointerCurrentRaycast.gameObject);
-        
-
-        //}
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -136,11 +133,7 @@ public class GameManager : MonoBehaviour, IPointerDownHandler, IPointerClickHand
     public void OnPointerUp(PointerEventData eventData)
     {
         mousepressed = false;
-       // Time.timeScale = 1;
-
         sceneManager.OnMouseUp(eventData.pointerCurrentRaycast.gameObject);
-
-        //gm.disableanim();
     }
 
 }

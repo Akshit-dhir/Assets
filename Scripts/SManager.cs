@@ -21,38 +21,18 @@ public class SManager : MonoBehaviour {
 	}
     public virtual void OnMouseDown(GameObject go)
     {
+        Debug.Log(go.tag);
         if (go.tag == "text") {
-           // TinkerText tinkerText = go.transform.parent.GetComponent<TinkerText>();
+              stanzaManager.OnMouseDown(go.GetComponent<TinkerText>());
 
-            //do something related to tinkertext
-            //clip
-            //animation
-            //if (stanzaManager != null)
-            //    {
-                   stanzaManager.OnMouseDown(go.GetComponent<TinkerText>());
-                //}
-            
-
-
-        }
+            }
         
     }
     public virtual void OnMouseUp(GameObject go)
     {
         if (go.tag == "text")
         {
-            // TinkerText tinkerText = go.transform.parent.GetComponent<TinkerText>();
-
-            //do something related to tinkertext
-            //clip
-            //animation
-            //if (stanzaManager != null)
-            //    {
             stanzaManager.OnMouseUp(go.GetComponent<TinkerText>());
-            //}
-
-
-
         }
 
     }
